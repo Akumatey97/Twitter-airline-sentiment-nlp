@@ -33,7 +33,12 @@ Build and compare models that classify airline-related tweets into sentiment cat
 
 ---
 
-## 3. Repository Structure
+--
+
+## 3. EDA Findings
+Exploratory analysis reveals that the dataset is highly imbalanced, with negative tweets dominating overall and for every airline. Most complaints are about customer service, late or cancelled flights, and lost luggage, while positive tweets are relatively rare. Tweets are typically between 80–140 characters long, which informed preprocessing and model design choices for the later sentiment classification models.
+
+## 4. Repository Structure
 
 ```text
 twitter-airline-sentiment-nlp/
@@ -54,6 +59,4 @@ twitter-airline-sentiment-nlp/
 │
 └── README.md
 
---
 
-## 4. EDA Findings
