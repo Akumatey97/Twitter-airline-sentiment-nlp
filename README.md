@@ -84,7 +84,7 @@ Class weighting in Logistic Regression significantly improves performance on neu
 
 These limitations motivate using a transformer model (DistilBERT) better to capture context in short, ambiguous airline tweets and further improve minority‑class performance.
 
-## 4. Repository Structure
+## 5. Repository Structure
 
 ```text
 twitter-airline-sentiment-nlp/
