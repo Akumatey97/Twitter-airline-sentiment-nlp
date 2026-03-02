@@ -38,6 +38,52 @@ Build and compare models that classify airline-related tweets into sentiment cat
 ## 3. EDA Findings
 Exploratory analysis reveals that the dataset is highly imbalanced, with negative tweets dominating overall and for every airline. Most complaints are about customer service, late or cancelled flights, and lost luggage, while positive tweets are relatively rare. Tweets are typically between 80–140 characters long, which informed preprocessing and model design choices for the later sentiment classification models.
 
+## 4. Baseline models summary
+Train/validation/test setup
+
+Used the cleaned tweet text and airline_sentiment labels on an 80/10/10 train/validation/test split, stratified by sentiment to preserve class proportions.
+
+Text was lowercased and lightly cleaned (URLs, mentions removed), then vectorized with a TF–IDF representation using unigrams and bigrams.
+
+Logistic Regression (TF–IDF, class_weight='balanced')
+To handle sentiment imbalance (many more negative tweets), a multinomial Logistic Regression model was trained with class_weight='balanced' so minority classes (neutral, positive) receive higher weight.
+
+Validation: accuracy ≈ 0.74, macro F1 ≈ 0.70.
+
+Test: accuracy ≈ 0.78, macro F1 ≈ 0.73.
+
+Per‑class test scores:
+
+Negative: precision 0.88, recall 0.82, F1 0.85 (model captures most negative tweets).
+
+Neutral: precision 0.57, recall 0.68, F1 0.62 (much improved compared to the unweighted baseline).
+
+Positive: precision 0.72, recall 0.73, F1 0.72 (balanced precision/recall on the minority positive class).
+
+These results show that class weighting trades a bit of negative‑class precision for significantly better recall and F1 on neutral and positive tweets, which is desirable when minority classes are important.
+
+Linear SVM (TF–IDF)
+A Linear SVM classifier was also trained on the same TF–IDF features for comparison.
+
+Test: accuracy ≈ 0.77, macro F1 ≈ 0.70.
+
+Per‑class test scores:
+
+Negative: precision 0.83, recall 0.89, F1 0.86.
+
+Neutral: precision 0.61, recall 0.53, F1 0.57.
+
+Positive: precision 0.73, recall 0.63, F1 0.68.
+
+SVM slightly favors the negative class with higher recall, but underperforms class‑weighted Logistic Regression on neutral and positive tweets, so Logistic Regression remains the primary traditional baseline.
+
+Takeaways
+Simple TF–IDF + linear models already achieve ~77–78% test accuracy and macro F1 between 0.70 and 0.73 on this dataset.
+
+Class weighting in Logistic Regression significantly improves performance on neutral and positive sentiment without sacrificing overall accuracy, making it a strong baseline.
+
+These limitations motivate using a transformer model (DistilBERT) better to capture context in short, ambiguous airline tweets and further improve minority‑class performance.
+
 ## 4. Repository Structure
 
 ```text
