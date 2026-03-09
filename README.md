@@ -84,7 +84,39 @@ Class weighting in Logistic Regression significantly improves performance on neu
 
 These limitations motivate using a transformer model (DistilBERT) better to capture context in short, ambiguous airline tweets and further improve minority‑class performance.
 
-## 5. Repository Structure
+## 5. DistilBERT fine‑tuned model
+To capture richer context in tweets than TF–IDF can provide, I fine‑tuned a DistilBERT model (distilbert-base-uncased) for 3‑class sentiment classification (negative, neutral, positive).
+​
+
+Setup:
+
+Initialized DistilBertForSequenceClassification with 3 labels and a randomly initialized classification head.
+
+Used the same 80/10/10 train/validation/test split as the traditional models, with text tokenized to a max length of 64 tokens.
+
+Trained for 3 epochs with AdamW (learning rate 2e‑5, batch size 16) using the Hugging Face Trainer API and monitored validation metrics each epoch.
+​
+​
+
+Test performance:
+
+Accuracy: 0.84
+
+Macro F1: ≈ 0.79
+
+Per‑class test scores:
+
+Negative: precision 0.89, recall 0.93, F1 0.91 (very strong on the majority class).
+
+Neutral: precision 0.73, recall 0.65, F1 0.69 (substantial improvement vs TF–IDF baselines).
+
+Positive: precision 0.77, recall 0.76, F1 0.77 (best balance across all models).
+
+Compared to the best TF–IDF + Logistic Regression baseline (test accuracy ≈ 0.78, macro F1 ≈ 0.73), DistilBERT improves both overall accuracy and macro F1, particularly by better handling neutral and positive tweets that require more nuanced context understanding.
+
+
+
+## 6. Repository Structure
 
 ```text
 twitter-airline-sentiment-nlp/
