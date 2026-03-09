@@ -121,6 +121,26 @@ Compared to the best TF–IDF + Logistic Regression baseline (test accuracy ≈ 
 | TF–IDF + Linear SVM                  | 0.77     | 0.70     |
 | DistilBERT (fine‑tuned)              | 0.84     | 0.79     |
 
+## Predicting sentiment for example tweets
+To make the model’s behavior easy to understand, I tested it on a few realistic airline tweets.  
+For each tweet, the fine‑tuned DistilBERT model predicts one of three classes: negative, neutral, or positive.
+
+- “My flight was delayed for 5 hours, and nobody helped at the gate.” → **negative**  
+  The tweet clearly expresses frustration about a long delay and lack of help.
+
+- “Thanks @Delta for the smooth check-in and super friendly staff!” → **positive**  
+  Words like “thanks”, “smooth”, and “super friendly” show strong satisfaction.
+
+- “Hi @United, what is the baggage allowance for international flights?” → **neutral**  
+  This is just an information request with no clear complaint or praise.
+
+- “Plane is fine, but the customer service on the phone was terrible.” → **negative**  
+  Despite mentioning the plane is fine, the main feeling is negative because of “terrible” customer service.
+
+- “Boarded early, took off on time, and landed early. Great job!” → **positive**  
+  The tweet praises the airline for being early and says “Great job!”, which is clearly positive.
+
+  These examples show how the model automatically flags clear complaints as negative, praise as positive, and simple information requests as neutral, which is useful for routing tweets to the right customer‑service teams.
 
 ## 7. Repository Structure
 
