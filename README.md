@@ -114,9 +114,15 @@ Positive: precision 0.77, recall 0.76, F1 0.77 (best balance across all models).
 
 Compared to the best TF–IDF + Logistic Regression baseline (test accuracy ≈ 0.78, macro F1 ≈ 0.73), DistilBERT improves both overall accuracy and macro F1, particularly by better handling neutral and positive tweets that require more nuanced context understanding.
 
+## 6. Model Comparison
+| Model                                | Accuracy | Macro F1 |
+|--------------------------------------|----------|----------|
+| TF–IDF + Logistic Regression (bal.)  | 0.78     | 0.73     |
+| TF–IDF + Linear SVM                  | 0.77     | 0.70     |
+| DistilBERT (fine‑tuned)              | 0.84     | 0.79     |
 
 
-## 6. Repository Structure
+## 7. Repository Structure
 
 ```text
 twitter-airline-sentiment-nlp/
