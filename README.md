@@ -1,6 +1,6 @@
 # Twitter Airline Sentiment Analysis (NLP with DistilBERT)
 
-End-to-end NLP project using the **Twitter US Airline Sentiment** dataset to classify tweets about U.S. airlines as **positive**, **neutral**, or **negative**, and to understand key drivers of customer dissatisfaction.
+End‑to‑end NLP project using airline tweets to detect customer sentiment (negative, neutral, positive) and highlight top complaint themes for customer‑experience teams.
 
 This project is designed to showcase practical **data analyst → junior data scientist** skills, combining:
 - Exploratory data analysis (EDA)
@@ -121,7 +121,10 @@ Compared to the best TF–IDF + Logistic Regression baseline (test accuracy ≈ 
 | TF–IDF + Linear SVM                  | 0.77     | 0.70     |
 | DistilBERT (fine‑tuned)              | 0.84     | 0.79     |
 
+DistilBERT’s higher macro F1 means it misses fewer neutral and positive tweets, which is important if an airline wants to capture both complaints and genuine praise.
+
 ## Predicting sentiment for example tweets
+These examples show what a real airline tweet looks like and how the model would classify it in production.
 To make the model’s behavior easy to understand, I tested it on a few realistic airline tweets.  
 For each tweet, the fine‑tuned DistilBERT model predicts one of three classes: negative, neutral, or positive.
 
