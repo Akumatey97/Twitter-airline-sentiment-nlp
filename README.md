@@ -62,7 +62,7 @@ Positive: precision 0.72, recall 0.73, F1 0.72 (balanced precision/recall on the
 
 These results show that class weighting trades a bit of negative‑class precision for significantly better recall and F1 on neutral and positive tweets, which is desirable when minority classes are important.
 
-Linear SVM (TF–IDF)
+## Linear SVM (TF–IDF)
 A Linear SVM classifier was also trained on the same TF–IDF features for comparison.
 
 Test: accuracy ≈ 0.77, macro F1 ≈ 0.70.
